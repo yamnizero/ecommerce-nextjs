@@ -1,8 +1,12 @@
 import React from 'react'
 
-function ProductList() {
+function ProductList({productList}) {
   return (
-    <div>ProductList</div>
+    <div>
+        {productList.map(item=>(
+            <div>{item?.attributes?.title}</div> 
+        ))}
+    </div>
   )
 }
 
