@@ -12,10 +12,10 @@ function ProductSection() {
         ProductApis.getLatestProducts().then(res=>{
             console.log(res.data.data);
             setProductList(res.data.data)
-        })
+        }) 
     }
   return (
-    <div>
+    <div className='px-10 md:px-20 '>
         <ProductList productList={productList} /> 
     </div>
   )
