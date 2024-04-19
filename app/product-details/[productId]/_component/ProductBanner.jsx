@@ -1,8 +1,17 @@
 import React from 'react'
+import Image from 'next/image'
 
-function ProductBanner() {
+function ProductBanner({product}) {
   return (
-    <div>ProductBanner</div>
+    <div>
+        <Image
+         src={product?.attributes?.banner?.data?.attributes?.url}
+         alt='product-details-banner'
+         width={400}
+         height={400}
+         className='rounded-lg'
+         />
+    </div>
   )
 }
 
