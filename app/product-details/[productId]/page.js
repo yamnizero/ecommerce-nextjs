@@ -1,6 +1,9 @@
 'use client'
+import BreadCrumb from '@/app/_components/BreadCrumb';
 import ProductApis from '@/app/_utils/ProductApis'
 import React, { useEffect } from 'react'
+import ProductBanner from './_component/ProductBanner';
+import ProductInfo from './_component/ProductInfo';
 
 function ProductDetails({params}) {
     useEffect(()=>{
@@ -12,7 +15,13 @@ function ProductDetails({params}) {
         })
     }
   return (
-    <div>{params?.productId}</div>
+    <div className='px-10 md:px-25 py-8'>
+      <BreadCrumb />
+      <div>
+        <ProductBanner />
+        <ProductInfo />
+      </div>
+    </div>
   )
 }
 
