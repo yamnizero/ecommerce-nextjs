@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 function ProductBanner({product}) {
   return (
-    <div>
+    <div className='items-center'>
         <Image
          src={product?.attributes?.banner?.data?.attributes?.url}
          alt='product-details-banner'

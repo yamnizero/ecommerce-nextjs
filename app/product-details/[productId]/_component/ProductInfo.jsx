@@ -1,4 +1,4 @@
-import { ShoppingCart } from 'lucide-react'
+import { AlertOctagon, BadgeCheck, ShoppingCart } from 'lucide-react'
 import React from 'react'
 
 function ProductInfo({product}) {
@@ -8,9 +8,14 @@ function ProductInfo({product}) {
        <h2 className='text-[15px] text-gray-400'>
        {product?.attributes?.category}
        </h2>
-       <h2 className='text-[15px] mt-5 text-gray-400'>
+       <h2 className='text-[11px] mt-2'>
        {product?.attributes?.description[0]?.children[0].text}
        </h2>
+       <h2 className='text-[11px]  text-gray-500 flex gap-2 mt-2 items-center'>
+        {product?.attributes?.instantDelivery ? <BadgeCheck className='w-5 h-5 text-green-500' /> : <AlertOctagon />}
+        Eligible For Instant Deliver
+        </h2>
+       
        <h2 className='text-[32px] mt-3 text-primary'>
        ${product?.attributes?.price}
        </h2>
