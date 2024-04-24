@@ -1,11 +1,12 @@
 'use client'
-import BreadCrumb from '@/app/_components/BreadCrumb';
-import ProductApis from '@/app/_utils/ProductApis'
-import React, { useEffect, useState } from 'react'
+
+import ProductApis from '../../_utils/ProductApis';
+import React, { useEffect, useState } from 'react';
 import ProductBanner from './_component/ProductBanner';
 import ProductInfo from './_component/ProductInfo';
-import ProductList from '@/app/_components/ProductList';
+import ProductList from "../../_components/ProductList";
 import { usePathname } from 'next/navigation';
+import BreadCrumb from '../../_components/BreadCrumb';
 
 function ProductDetails({params}) {
   const path = usePathname();
