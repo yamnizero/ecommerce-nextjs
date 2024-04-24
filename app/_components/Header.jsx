@@ -1,11 +1,16 @@
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { useUser } from '@clerk/nextjs'
+import { UserButton, useUser } from '@clerk/nextjs'
+import { ShoppingCart } from 'lucide-react';
 
 function Header() { 
+  const [isLoggedIn,setIsLoggedIn] = useState(false) 
+  useEffect(() =>{
+    setIsLoggedIn(window.location.href.toString().includes('sign-in'))
+  },[])
   const { user} = useUser();
-  return user && (
+  return !isLoggedIn && (
     <header className="bg-white">
   <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8 shadow-md">
   <Image src='/logo.svg' alt='logo' width={50} height={50} />
@@ -38,11 +43,13 @@ function Header() {
       </nav>
 
       <div className="flex items-center gap-4">
+      {!user ?
         <div className="sm:flex sm:gap-4">
+          
           <a
             className="block rounded-md bg-primary  px-5 py-2.5 text-sm font-medium text-white transition
              hover:bg-[#378CE7]"
-            href="#"
+            href="/sign-in"
           >
             Login
           </a>
@@ -53,7 +60,12 @@ function Header() {
           >
             Register
           </a>
-        </div>
+        </div> : 
+        <div className='flex items-center gap-5'> 
+         <h2 className='flex gap-1 cursor-pointer'> <ShoppingCart />(0)</h2>
+          <UserButton afterSignOutUrl="/"/> 
+          </div>
+        } 
 
         <button
           className="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden"
